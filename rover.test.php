@@ -46,12 +46,13 @@ class testRover extends TestCase{
 	public function testMultipleCommands(){
 		$rover4= new Rover();
 		$rover4->executeCommands(["r","f","l","b"]);
+		var_dump($rover4->getCoordinates());
 		$this->assertEquals(
 			$rover4->getCoordinates(),
 			array(
-				"x"=>0,
-				"y"=>0,
-				"direction"=>"east"
+				"x"=>1,
+				"y"=>-1,
+				"direction"=>"north"
 				)
 			);
 
