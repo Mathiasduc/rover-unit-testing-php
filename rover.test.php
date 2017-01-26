@@ -12,23 +12,9 @@ class testRover extends TestCase{
 				"y"=>0,
 				"direction"=>"north"
 				)
-		);
+			);
 	}
 
-	public function testMoveForwardToNorth(){
-		$rover2 = new Rover();
-		$rover2->executeCommands(["f"]);
-		$this->assertEquals(
-			$rover2->getCoordinates(),
-			array(
-				"x"=>0,
-				"y"=>1,
-				"direction"=>"north"
-				)
-		);
-
-
-	}
 	public function testTurnToRight(){
 		$rover3= new Rover();
 		$rover3->executeCommands(["r"]);
@@ -39,22 +25,111 @@ class testRover extends TestCase{
 				"y"=>0,
 				"direction"=>"east"
 				)
-		);
-
-
+			);
 	}
-	public function testMultipleCommands(){
-		$rover4= new Rover();
-		$rover4->executeCommands(["r","f","l","b"]);
-		var_dump($rover4->getCoordinates());
+	
+	public function testMoveForwardWhenFacingNorth(){
+		$rover2 = new Rover();
+		$rover2->executeCommands(["f"]);
 		$this->assertEquals(
-			$rover4->getCoordinates(),
+			$rover2->getCoordinates(),
+			array(
+				"x"=>0,
+				"y"=>1,
+				"direction"=>"north"
+				)
+			);
+	}
+
+	public function testMoveForwardWhenFacingEast(){
+		$rover = new Rover();
+		$rover->executeCommands(["r","f"]);
+		$this->assertEquals(
+			$rover->getCoordinates(),
 			array(
 				"x"=>1,
+				"y"=>0,
+				"direction"=>"east"
+				)
+			);
+	}
+
+	public function testmoveForwardWhenFacingSouth(){
+		$rover = new Rover();
+		$rover->executeCommands(["l","l","f"]);
+		$this->assertEquals(
+			$rover->getCoordinates(),
+			array(
+				"x"=>0,
+				"y"=>-1,
+				"direction"=>"south"
+				)
+			);
+
+	}
+
+	public function testMoveForwardWhenFacingWest(){
+		$rover = new Rover();
+		$rover->executeCommands(["l","f"]);
+		$this->assertEquals(
+			$rover->getCoordinates(),
+			array(
+				"x"=>-1,
+				"y"=>0,
+				"direction"=>"west"
+				)
+			);
+	}
+
+	public function testMoveBackwardWhenFacingNorth(){
+		$rover = new Rover();
+		$rover->executeCommands(["b"]);
+		$this->assertEquals(
+			$rover->getCoordinates(),
+			array(
+				"x"=>0,
 				"y"=>-1,
 				"direction"=>"north"
 				)
 			);
+	}
 
+	public function testMoveBackwardWhenFacingEast(){
+		$rover = new Rover();
+		$rover->executeCommands(["r","b"]);
+		$this->assertEquals(
+			$rover->getCoordinates(),
+			array(
+				"x"=>-1,
+				"y"=>0,
+				"direction"=>"east"
+				)
+			);
+	}
+
+	public function testMoveBackwardWhenFacingSouth(){
+		$rover = new Rover();
+		$rover->executeCommands(["r","r","b"]);
+		$this->assertEquals(
+			$rover->getCoordinates(),
+			array(
+				"x"=>0,
+				"y"=>1,
+				"direction"=>"south"
+				)
+			);
+	}
+
+	public function testMoveBackwardWhenFacingWest(){
+		$rover = new Rover();
+		$rover->executeCommands(["l","b"]);
+		$this->assertEquals(
+			$rover->getCoordinates(),
+			array(
+				"x"=>1,
+				"y"=>0,
+				"direction"=>"west"
+				)
+			);
 	}
 }
