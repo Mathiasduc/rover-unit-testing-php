@@ -3,51 +3,46 @@
 class Rover {
 	private $_cardinalPoints = array("N","E","S","W");
 	
-	private $_coordinates = array("x"=>0,"y"=>0,"direction"=>0);
+	private $_coordinates = array("x"=>0,"y"=>0,"facingDirection"=>0);
 
 	public function getCoordinates(){
 		return $this->_coordinates;
 	}
-	public function getDirection(){
-		return $this->_coordinates["direction"];
+	public function getfacingDirection(){
+		return $this->_coordinates["facingDirection"];
 	}
 
 	public function executeCommands($arrayCommands){
 		$arrayCommandsLength= count($arrayCommands);
 		for ($i=0;$i < $arrayCommandsLength; $i++){
 			if($arrayCommands[$i] === "f"){
-				$this->move(true);
+				$this->move(1);
 			}elseif($arrayCommands[$i] === "b"){
-				$this->move(false);
+				$this->move(-1);
 			}elseif($arrayCommands[$i] === "r"){
-				$this->turnRight();
+				$this->turn(1);
 			}elseif($arrayCommands[$i] === "l"){
-				$this->turnLeft();
+				$this->turn(-1);
 			}else{
 				throw new Exception("Command not recognised", 1);
 			}
 		}
 	}
 
-	public function turnRight(){
-		$this->_coordinates["direction"] = $this->getDirection() +1;
-		if($this->getDirection() === 4){
-			$this->_coordinates["direction"] = 0;
+	public function turn($turnDirection){
+		$this->_coordinates["facingDirection"] = $this->getfacingDirection() + $turnDirection;
+		if($this->getfacingDirection() === 4){
+			$this->_coordinates["facingDirection"] = 0;
+		}elseif($this->getfacingDirection() === -1){
+			$this->_coordinates["facingDirection"] = 3;
 		}
 	}
 
-	public function turnLeft(){
-		$this->_coordinates["direction"] = $this->getDirection() -1;
-		if($this->getDirection() === -1){
-			$this->_coordinates["direction"] = 3;
-		}
-	}
-	
-	public function move($forwardBool){
-    $moveX = $forwardBool? array(0,1,0,-1): array(0,-1,0,1);
-	$moveY = $forwardBool? array(1,0,-1,0): array(-1,0,1,0);
-	$this->_coordinates["y"] += $moveY[$this->getDirection()];
-	$this->_coordinates["x"] += $moveX[$this->getDirection()];
+	public function move($moveDirection){
+    $moveX = array(0,1,0,-1);
+	$moveY = array(1,0,-1,0);
+	$this->_coordinates["y"] += $moveY[$this->getfacingDirection()] * $moveDirection;
+	$this->_coordinates["x"] += $moveX[$this->getfacingDirection()] * $moveDirection;
 	}
 }
 ?>

@@ -10,7 +10,7 @@ class testRover extends TestCase{
 			array(
 				"x"=>0,
 				"y"=>0,
-				"direction"=>0
+				"facingDirection"=>0
 				)
 			);
 	}
@@ -23,7 +23,7 @@ class testRover extends TestCase{
 			array(
 				"x"=>0,
 				"y"=>0,
-				"direction"=>1
+				"facingDirection"=>1
 				)
 			);
 	}
@@ -36,7 +36,7 @@ class testRover extends TestCase{
 			array(
 				"x"=>0,
 				"y"=>1,
-				"direction"=>0
+				"facingDirection"=>0
 				)
 			);
 	}
@@ -49,7 +49,7 @@ class testRover extends TestCase{
 			array(
 				"x"=>1,
 				"y"=>0,
-				"direction"=>1
+				"facingDirection"=>1
 				)
 			);
 	}
@@ -62,7 +62,7 @@ class testRover extends TestCase{
 			array(
 				"x"=>0,
 				"y"=>-1,
-				"direction"=>2
+				"facingDirection"=>2
 				)
 			);
 
@@ -76,7 +76,7 @@ class testRover extends TestCase{
 			array(
 				"x"=>-1,
 				"y"=>0,
-				"direction"=>3
+				"facingDirection"=>3
 				)
 			);
 	}
@@ -89,7 +89,7 @@ class testRover extends TestCase{
 			array(
 				"x"=>0,
 				"y"=>-1,
-				"direction"=>0
+				"facingDirection"=>0
 				)
 			);
 	}
@@ -102,7 +102,7 @@ class testRover extends TestCase{
 			array(
 				"x"=>-1,
 				"y"=>0,
-				"direction"=>1
+				"facingDirection"=>1
 				)
 			);
 	}
@@ -115,7 +115,7 @@ class testRover extends TestCase{
 			array(
 				"x"=>0,
 				"y"=>1,
-				"direction"=>2
+				"facingDirection"=>2
 				)
 			);
 	}
@@ -128,7 +128,7 @@ class testRover extends TestCase{
 			array(
 				"x"=>1,
 				"y"=>0,
-				"direction"=>3
+				"facingDirection"=>3
 				)
 			);
 	}
@@ -140,7 +140,7 @@ class testRover extends TestCase{
 			array(
 				"x"=>0,
 				"y"=>0,
-				"direction"=>2
+				"facingDirection"=>2
 				)
 			);
 	}
@@ -153,7 +153,7 @@ class testRover extends TestCase{
 			array(
 				"x"=>0,
 				"y"=>0,
-				"direction"=>3
+				"facingDirection"=>3
 				)
 			);
 	}
@@ -166,7 +166,7 @@ class testRover extends TestCase{
 			array(
 				"x"=>0,
 				"y"=>0,
-				"direction"=>0
+				"facingDirection"=>0
 				)
 			);
 	}
@@ -179,7 +179,7 @@ class testRover extends TestCase{
 			array(
 				"x"=>0,
 				"y"=>0,
-				"direction"=>3
+				"facingDirection"=>3
 				)
 			);
 	}
@@ -192,7 +192,7 @@ class testRover extends TestCase{
 			array(
 				"x"=>0,
 				"y"=>0,
-				"direction"=>2
+				"facingDirection"=>2
 				)
 			);
 	}
@@ -204,7 +204,7 @@ class testRover extends TestCase{
 			array(
 				"x"=>0,
 				"y"=>0,
-				"direction"=>1
+				"facingDirection"=>1
 				)
 			);
 	}
@@ -216,8 +216,21 @@ class testRover extends TestCase{
 			array(
 				"x"=>0,
 				"y"=>0,
-				"direction"=>0
+				"facingDirection"=>0
 				)
 			);
 	}
+
+	/*public function testErroThrow(){
+		$rover = new Rover();
+		$rover->executeCommands(["x","flskn"]);
+		$this->assertEquals(
+			$rover->getCoordinates(),
+			array(
+				"x"=>0,
+				"y"=>0,
+				"facingDirection"=>0
+				)
+			);
+	}*/
 }
